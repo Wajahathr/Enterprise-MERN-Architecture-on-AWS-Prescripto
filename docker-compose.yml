@@ -1,0 +1,44 @@
+version: '3.8'
+
+services:
+  # 1. Database (MongoDB)
+  mongodb:
+    image: mongo:latest
+    container_name: prescripto-db
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+
+  # 2. Backend API
+  backend:
+    build: ./backend
+    container_name: prescripto-backend
+    ports:
+      - "4000:4000"
+    environment:
+      - MONGODB_URI=mongodb://mongodb:27017/prescripto
+    depends_on:
+      - mongodb
+
+  # 3. Patient Frontend
+  frontend:
+    build: ./frontend
+    container_name: prescripto-frontend
+    ports:
+      - "5173:80" # Bahar se 5173 par aayenge, andar Nginx port 80 par sunega
+    depends_on:
+      - backend
+
+  # 4. Admin Dashboard
+  admin:
+    build: ./admin
+    container_name: prescripto-admin
+    ports:
+      - "5174:80"
+    depends_on:
+      - backend
+
+# Database ka data save rakhne ke liye volume
+volumes:
+  mongo-data:
