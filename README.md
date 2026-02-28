@@ -1,6 +1,6 @@
 # 🏥 Prescripto: Enterprise MERN Architecture on AWS
 
-![Prescripto AWS Architecture](image/Portfolio%20project2.png)
+![Prescripto AWS Architecture](image/Portfoliop.jpg)
 
 ## 🚀 Project Overview
 **Prescripto** is a comprehensive Doctor Appointment booking system. However, this repository focuses on transforming a standard MERN stack application into a **Highly Available, Secure, and Production-Ready Enterprise Architecture** deployed on Amazon Web Services (AWS).
